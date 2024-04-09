@@ -1,16 +1,5 @@
-let userName = prompt('who"s there?', '');
+let num;
 
-if (userName == 'Admin') {
-  let password = prompt('Password?', '');
-  if (password == 'TheMaster') {
-    alert('Welcome!');
-  } else if (password == null) {
-    alert('Canceled');
-  } else {
-    alert('Wrong password');
-  }
-} else if (userName == null) {
-  alert('Canceled');
-} else {
-  alert('I do not know you');
-}
+do {
+  num = prompt('Enter a number greater than 100?', 0);
+} while (num <= 100 && num);
