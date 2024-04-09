@@ -1,5 +1,8 @@
-let num;
+let n = prompt('enter a number', '');
 
-do {
-  num = prompt('Enter a number greater than 100?', 0);
-} while (num <= 100 && num);
+nextPrime: for (let i = 2; i <= n; i++) {
+  for (let j = 2; j < i; j++) {
+    if (i % j == 0) continue nextPrime;
+  }
+  alert(i);
+}
