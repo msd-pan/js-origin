@@ -1,15 +1,7 @@
-let a = +prompt('a?', '');
-// 这里这个加号是为了将输入的字符串类型的数字转为数字类型
+function checkAge(age) {
+  return age > 18 ? true : confirm('Do you have your parents permission?');
+}
 
-switch (a) {
-  case 0:
-    alert(0);
-    break;
-  case 1:
-    alert(1);
-    break;
-  case 2:
-  case 3:
-    alert(0);
-    break;
+function checkAge(age) {
+  return age > 18 || confirm('Do you have your parents permission?');
 }
