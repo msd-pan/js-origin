@@ -1,7 +1,8 @@
-function checkAge(age) {
-  return age > 18 ? true : confirm('Do you have your parents permission?');
+function getMinor(a, b) {
+  return Math.min(a, b);
 }
 
-function checkAge(age) {
-  return age > 18 || confirm('Do you have your parents permission?');
-}
+let a = +prompt('a?', '');
+let b = +prompt('b?', '');
+// getMinor(a, b);
+alert(getMinor(a, b));
