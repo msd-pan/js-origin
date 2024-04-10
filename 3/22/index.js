@@ -1,8 +1,14 @@
-let n = prompt('enter a number', '');
+let browser;
 
-nextPrime: for (let i = 2; i <= n; i++) {
-  for (let j = 2; j < i; j++) {
-    if (i % j == 0) continue nextPrime;
-  }
-  alert(i);
+if (browser === 'Edge') {
+  alert('You have got the Edge!');
+} else if (
+  browser === 'Chrome' ||
+  browser === 'Firefox' ||
+  browser === 'Safari' ||
+  browser === 'Opera'
+) {
+  alert('Okay we support that too');
+} else {
+  alert('We hope that this page looks ok!');
 }
