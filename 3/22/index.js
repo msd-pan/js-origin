@@ -1,8 +1,10 @@
-function pow(x, n) {
-  return x ** n;
-}
+let ask = (question, yes, no) => {
+  if (confirm(question)) yes();
+  else no();
+};
 
-let x = +prompt('x?', '');
-let n = +prompt('n?', '');
-// getMinor(a, b);
-alert(pow(x, n));
+ask(
+  'do you agree?',
+  () => alert('you agreed.'),
+  () => alert('you canceled the execution.'),
+);
