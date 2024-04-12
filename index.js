@@ -1,27 +1,11 @@
-// 自己作成
+let salaries = { John: 100, Ann: 160, Pete: 130 };
+let sum = 0;
 
-// let isEmpty = (obj) => {
-//   for (let key in obj) {
-//     if (key in obj) {
-//       return false;
-//     } else return true;
-//   }
-// };
-// let schedule = {};
-// alert(isEmpty(schedule));
-
-// schedule['8:30'] = 'get up';
-// alert(isEmpty(schedule));
-
-// answer
-let isEmpty = (obj) => {
+let sumObj = (obj) => {
   for (let key in obj) {
-    return false;
+    // alert(obj[key]);
+    sum += obj[key];
   }
-  return true;
+  alert(sum);
 };
-let schedule = {};
-alert(isEmpty(schedule));
-
-schedule['8:30'] = 'get up';
-alert(isEmpty(schedule));
+sumObj(salaries);
