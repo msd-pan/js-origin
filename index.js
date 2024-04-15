@@ -1,23 +1,23 @@
-// 自己作成
+function Calculator() {
+  this.read = function () {
+    let a = +prompt('a?', 0);
+    let b = +prompt('b?', 0);
+    this.a = a;
+    this.b = b;
+    // 给对象赋属性可以用以下语句
+    // this.a = +prompt('a?', 0);
+    // this.b = +prompt('b?', 0);
+  };
 
+  this.sum = function () {
+    return this.a + this.b;
+  };
 
-// function A() {
-//   this.name = 'A';
-// }
-// function B() {
-//   this.name = 'A';
-// }
-
-// alert(new A() == new B());
-
-// 答案
-
-let obj={}
-function A() {
-  return obj;
+  this.mul = function () {
+    return this.a * this.b;
+  };
 }
-function B() {
-  return obj;
-}
-
-alert(new A() == new B());
+let calculator = new Calculator();
+calculator.read();
+alert('Sum=' + calculator.sum());
+alert('Mul=' + calculator.mul());
