@@ -1,11 +1,11 @@
-let salaries = { John: 100, Ann: 160, Pete: 130 };
-let sum = 0;
+let menu = { width: 200, height: 300, title: 'my menu' };
 
-let sumObj = (obj) => {
+let multiplyNumberic = (obj) => {
   for (let key in obj) {
-    // alert(obj[key]);
-    sum += obj[key];
+    if (typeof obj[key] == 'number') {
+      obj[key] *= 2;
+    }
+    alert(obj[key]);
   }
-  alert(sum);
 };
-sumObj(salaries);
+multiplyNumberic(menu);
