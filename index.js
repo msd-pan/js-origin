@@ -1,11 +1,40 @@
-let menu = { width: 200, height: 300, title: 'my menu' };
+// 自己尝试
 
-let multiplyNumberic = (obj) => {
-  for (let key in obj) {
-    if (typeof obj[key] == 'number') {
-      obj[key] *= 2;
-    }
-    alert(obj[key]);
-  }
+// let a, b, sum, mul;
+
+// let calculator = {
+//   read() {
+//     this.a = +prompt('a?', '');
+//     this.b = +prompt('b?', '');
+//   },
+//   sum() {
+//     for (let key in this) {
+//       sum += this[key];
+//     }
+//     return alert(sum);
+//   },
+//   mul() {
+//     return alert(this.a * this.b);
+//   },
+// };
+
+// calculator.read();
+// alert(calculator.sum());
+// alert(calculator.mul());
+
+// 答案
+let calculator = {
+  sum() {
+    return this.a + this.b;
+  },
+  mul() {
+    return this.a * this.b;
+  },
+  read() {
+    this.a = +prompt('a?', 0);
+    this.b = +prompt('b?', 0);
+  },
 };
-multiplyNumberic(menu);
+calculator.read();
+alert(calculator.sum());
+alert(calculator.mul());
