@@ -1,9 +1,10 @@
-let readNumber;
-do {
-  readNumber = +prompt('enter a number', 0);
-} while (isNaN(readNumber));
-if (readNumber == '' || readNumber == null) {
-  alert(null);
-} else {
-  alert(readNumber);
+alert((0.2).toFixed(20));
+
+let i = 0;
+while (i < 11) {
+  i += 0.2;
+  if (i > 9.8 && i < 10.2) alert(i);
 }
+
+// i永远不会等于10. 之所以发生这种情况，是因为对0.2这样的小数时进行加法运算时出现了精度损失。
+// 结论：在处理小数时避免相等性检查。
