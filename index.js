@@ -1,22 +1,12 @@
-let random = (min, max) => {
-  let ranNum;
-  do {
-    ranNum = (max - min) * Math.random() + min;
-  } while (ranNum >= max || ranNum < min);
-  return ranNum;
+let ucFirst = (str) => {
+  if (!str) return str;
+  str = str[0].toUpperCase() + str.slice(1);
+  alert(str);
 };
 
-/* 我们需要将区间0到1中的所有值“映射”为范围在min到max中的值。
-    可以分为两个阶段完成：
-    1：如果我们将0到1的随机数乘以max-min，则随机数的范围将从0到1增加到0到max-min
-    2：现在，如果我们将随机数与min相加，则随机数的范围将为min到max。
-*/
+ucFirst('like');
 
-/* 答案函数实现
-function random(min, max) {
-  return;
-  min + Math.random() * (max - min);
-} */
-alert(random(1, 5));
-alert(random(1, 5));
-alert(random(1, 5));
+/* 解释
+在js中字符串是不可变的，所以我们可以根据已有字符串创建一个首字母大写的新字符串。
+同时，如股票str是空的，那么str[0]就是undefined，但由于undefined并没有toUpperCase()方法，因此会得到一个错误。所以当检测到为空字符串时，返回空字符串
+*/
