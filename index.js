@@ -1,14 +1,13 @@
-let checkSpam = (str) => {
-  if (
-    str.toLowerCase().indexOf('viagra') != -1 ||
-    str.toLowerCase().indexOf('xxx') != -1
-  ) {
-    return true;
-  } else return false;
+let truncate = (str, maxLength) => {
+  if (str.length > maxLength) {
+    let newStr = str.slice(0, maxLength - 1) + '...';
+    return newStr;
+  } else {
+    return str;
+  }
 };
 
-alert(checkSpam('buy ViAgRA now'));
-alert(checkSpam('free xxxxx'));
-alert(checkSpam('innocent rabbit'));
+alert(truncate('Hi Joshua!', 20));
+alert(truncate('I miss you and want hug you when we meet!', 20));
 
-// 为了使搜索不区分大小写，我们可以将字符串统一改为小写，之后进行检测
+// 省略号实际上有一个单独的Unicode字符，而不是三个点。
