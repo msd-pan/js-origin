@@ -1,26 +1,11 @@
-let range = { from: 1, to: 5 };
+let str = 'hello';
 
-// 1.for of调用首先会调用这个：
-range[Symbol.iterator] = function () {
-  // 它返回迭代器对象（iterator object）：
-  // 2. 接下来，for of仅与下面的迭代器对象一起工作，要求它提供下一个值
-  return {
-    current: this.from,
-    last: this.to,
+// 和for..of做同样的事
+// for (let char of str)  alert(char)
+let iterator = str[Symbol.iterator]();
 
-    // 3. next（）在for of的每一轮循环迭代中被调用
-    next() {
-      // 4. 它将返回{done:..., value:...}的格式的对象
-      if (this.current <= this.last) {
-        return { done: false, value: this.current++ };
-      } else {
-        return { done: true };
-      }
-    },
-  };
-};
-
-// 现在它可以运行了
-for (let num of range) {
-  alert(num);
+while (true) {
+  let result = iterator.next();
+  if (result.done) break;
+  alert(result.value); //一个接一个的输出字符
 }
