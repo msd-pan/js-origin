@@ -1,26 +1,24 @@
-let set = new Set();
+let set = new Set(['oranges', 'bananas', 'apples']);
 
-let john = { name: 'john' };
-let pete = { name: 'pete' };
-let mary = { name: 'mary' };
+for (let value of set) alert(value);
 
-// visits, 一些访客来访好几次
-set.add(john);
-set.add(pete);
-set.add(mary);
-set.add(john);
-set.add(mary);
+// 与forEach相同：
+set.forEach((value, valueAgain, set) => {
+  alert(value);
+});
 
-// set 只保留不重复的值
-alert(set.size);
+/*  我们可以使用 for..of 或 forEach 来遍历 Set：
 
-for (let user of set) {
-  alert(user.name);
-}
+注意一件有趣的事儿。forEach 的回调函数有三个参数：一个 value，然后是 同一个值 valueAgain，最后是目标对象。没错，同一个值在参数里出现了两次。
 
-/* Set 是一个特殊的类型集合 —— “值的集合”（没有键），它的每一个值只能出现一次。
+forEach 的回调函数有三个参数，是为了与 Map 兼容。当然，这看起来确实有些奇怪。但是这对在特定情况下轻松地用 Set 代替 Map 很有帮助，反之亦然。
 
-它的主要特点是，重复使用同一个值调用 set.add(value) 并不会发生什么改变。这就是 Set 里面的每一个值只出现一次的原因。
+Map 中用于迭代的方法在 Set 中也同样支持：
 
-例如，我们有客人来访，我们想记住他们每一个人。但是已经来访过的客人再次来访，不应造成重复记录。每个访客必须只被“计数”一次。
+set.keys() —— 遍历并返回一个包含所有值的可迭代对象，
+set.values() —— 与 set.keys() 作用相同，这是为了兼容 Map，
+set.entries() —— 遍历并返回一个包含所有的实体 [value, value] 的可迭代对象，它的存在也是为了兼容 Map。
+
+
+
 */
