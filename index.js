@@ -1,12 +1,26 @@
-function filterRange(arr, a, b) {
-  // 在表达式周围添加了括号，以提高可读性
-  return arr.filter((item) => a <= item && item <= b);
+let range = { from: 1, to: 5 };
+
+// 1.for of调用首先会调用这个：
+range[Symbol.iterator] = function () {
+  // 它返回迭代器对象（iterator object）：
+  // 2. 接下来，for of仅与下面的迭代器对象一起工作，要求它提供下一个值
+  return {
+    current: this.from,
+    last: this.to,
+
+    // 3. next（）在for of的每一轮循环迭代中被调用
+    next() {
+      // 4. 它将返回{done:..., value:...}的格式的对象
+      if (this.current <= this.last) {
+        return { done: false, value: this.current++ };
+      } else {
+        return { done: true };
+      }
+    },
+  };
+};
+
+// 现在它可以运行了
+for (let num of range) {
+  alert(num);
 }
-
-let arr = [5, 3, 8, 1];
-
-let filtered = filterRange(arr, 1, 4);
-
-alert(filtered); // 3,1（匹配的值）
-
-alert(arr); // 5,3,8,1（未经改动的数组中的值）
