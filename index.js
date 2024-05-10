@@ -1,27 +1,13 @@
-let recipeMap = new Map([
-  ['cucumber', 500],
-  ['tomatoes', 350],
-  ['onion', 50],
-]);
+let obj = {
+  name: 'john',
+  age: 30,
+};
 
-// 遍历所有的键
-for (let vegetable of recipeMap.keys()) {
-  alert(vegetable);
-}
+let map = new Map(Object.entries(obj));
 
-// 遍历所有的值
-for (let amount of recipeMap.values()) {
-  alert(amount);
-}
+alert(map.get('name'));
 
-// 遍历所有的实体[key, value]
-for (let entry of recipeMap.entries()) {
-  // 与let entry of recipeMap相同
-  alert(entry);
-}
+/* 如果我们想从一个已有的普通对象（plain object）来创建一个 Map，那么我们可以使用内建方法 Object.entries(obj)，该方法返回对象的键/值对数组，该数组格式完全按照 Map 所需的格式。
 
-/* 如果要在 map 里使用循环，可以使用以下三个方法：
-
-map.keys() —— 遍历并返回一个包含所有键的可迭代对象，
-map.values() —— 遍历并返回一个包含所有值的可迭代对象，
-map.entries() —— 遍历并返回一个包含所有实体 [key, value] 的可迭代对象，for..of 在默认情况下使用的就是这个。 */
+这里，Object.entries 返回键/值对数组：[ ["name","John"], ["age", 30] ]。这就是 Map 所需要的格式。
+ */
