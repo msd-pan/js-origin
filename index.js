@@ -1,16 +1,11 @@
-let date = new Date(Date.parse('2012-02-20T03:12:00'));
-alert(date);
+let getWeekDay = (date) => {
+  let days = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
 
-// 这是一个以数字作为日期参数的示例：
-// new Date(year, month, date, hour, minute, second, millisecond)
-let d1 = new Date(2012, 1, 20, 3, 12);
-alert(d1);
+  return days[date.getDay()];
+};
 
-// 我们还可以从字符串创建日期
-// new Date(datestring)
-let d2 = new Date('2012-02-20T03:12');
-alert(d2);
+let date = new Date(2014, 0, 3);
+alert(getWeekDay(date));
 
-/* new Date 构造函数默认使用本地时区。所以唯一需要牢记的就是月份从 0 开始计数。
-
-所以二月对应的数值是 1。 */
+/* getDay()
+获取一周中的第几天，从 0（星期日）到 6（星期六）。第一天始终是星期日，在某些国家可能不是这样的习惯，但是这不能被改变。 */
