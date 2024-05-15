@@ -1,40 +1,41 @@
-let user = {
-  name: 'John',
-  age: 25,
-  roles: {
-    isAdmin: false,
-    isEditor: true,
+let room = { number: 23 };
+
+let meetup = {
+  title: 'Conference',
+  date: new Date(Date.UTC(2017, 0, 1)),
+  room,
+};
+
+alert(JSON.stringify(meetup));
+
+/*
+  {
+    "title":"Conference",
+    "date":"2017-01-01T00:00:00.000Z",  // (1)
+    "room": {"number":23}               // (2)
+  }
+*/
+
+/* 像 toString 进行字符串转换，对象也可以提供 toJSON 方法来进行 JSON 转换。如果可用，JSON.stringify 会自动调用它。 
+
+在这儿我们可以看到 date (1) 变成了一个字符串。这是因为所有日期都有一个内建的 toJSON 方法来返回这种类型的字符串。
+
+现在让我们为对象 room 添加一个自定义的 toJSON：*/
+
+let room1 = {
+  number: 23,
+  toJSON() {
+    return this.number;
   },
 };
 
-alert(JSON.stringify(user, null, 2));
+let meetup1 = {
+  title: 'Conference',
+  room1,
+};
 
-/*  
-JSON.stringify(value, replacer, spaces) 的第三个参数是用于优化格式的空格数量。
+alert(JSON.stringify(room1));
 
-以前，所有字符串化的对象都没有缩进和额外的空格。如果我们想通过网络发送一个对象，那就没什么问题。space 参数专门用于调整出更美观的输出。
+alert(JSON.stringify(meetup1));
 
-这里的 space = 2 告诉 JavaScript 在多行中显示嵌套的对象，对象内部缩进 2 个空格：
-*/
-
-/* 两个空格的缩进：
-{
-  "name": "John",
-  "age": 25,
-  "roles": {
-    "isAdmin": false,
-    "isEditor": true
-  }
-}
-*/
-
-/* 对于 JSON.stringify(user, null, 4) 的结果会有更多缩进：
-{
-    "name": "John",
-    "age": 25,
-    "roles": {
-        "isAdmin": false,
-        "isEditor": true
-    }
-}
-*/
+/* 正如我们所看到的，toJSON 既可以用于直接调用 JSON.stringify(room) 也可以用于当 room 嵌套在另一个编码对象中时。 */
