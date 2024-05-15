@@ -1,20 +1,35 @@
-let student = {
-  name: 'John',
-  age: 30,
-  isAdmin: false,
-  courses: ['html', 'css', 'js'],
-  spouse: null,
+let room = { number: 23 };
+
+let meetup = {
+  title: 'Conference',
+  participants: [{ name: 'John' }, { name: 'Alice' }],
+  place: room, // meetup 引用了 room
 };
 
-let json = JSON.stringify(student);
+room.occupiedBy = meetup; // room 引用了 meetup
 
-alert(typeof json);
+alert(
+  JSON.stringify(meetup, function replacer(key, value) {
+    alert(`${key}: ${value}`);
+    return key == 'occupiedBy' ? undefined : value;
+  }),
+);
 
-alert(json);
+/* key:value pairs that come to replacer:
+:             [object Object]
+title:        Conference
+participants: [object Object],[object Object]
+0:            [object Object]
+name:         John
+1:            [object Object]
+name:         Alice
+place:        [object Object]
+number:       23
+occupiedBy: [object Object]
+*/
 
-/* 在JavaScript中，JSON（JavaScript Object Notation）格式确实是字符串格式。
+/* 我们可以使用一个函数代替数组作为 replacer。
 
-JSON是一种轻量级的数据交换格式，易于人类读取和编写，也易于机器解析和生成。它的基本结构是由键值对组成的对象和有序列表组成的数组，符合JavaScript对象表示的语法，但JSON是以字符串的形式存在的。 */
+该函数会为每个 (key,value) 对调用并返回“已替换”的值，该值将替换原有的值。如果值被跳过了，则为 undefined。
 
-/* JSON.stringify 将对象转换为 JSON。
-JSON.parse 将 JSON 转换回对象。 */
+在我们的例子中，我们可以为 occupiedBy 以外的所有内容按原样返回 value。对于 occupiedBy，下面的代码返回 undefined */
