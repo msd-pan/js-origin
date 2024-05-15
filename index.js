@@ -1,35 +1,40 @@
-let room = { number: 23 };
-
-let meetup = {
-  title: 'Conference',
-  participants: [{ name: 'John' }, { name: 'Alice' }],
-  place: room, // meetup 引用了 room
+let user = {
+  name: 'John',
+  age: 25,
+  roles: {
+    isAdmin: false,
+    isEditor: true,
+  },
 };
 
-room.occupiedBy = meetup; // room 引用了 meetup
+alert(JSON.stringify(user, null, 2));
 
-alert(
-  JSON.stringify(meetup, function replacer(key, value) {
-    alert(`${key}: ${value}`);
-    return key == 'occupiedBy' ? undefined : value;
-  }),
-);
+/*  
+JSON.stringify(value, replacer, spaces) 的第三个参数是用于优化格式的空格数量。
 
-/* key:value pairs that come to replacer:
-:             [object Object]
-title:        Conference
-participants: [object Object],[object Object]
-0:            [object Object]
-name:         John
-1:            [object Object]
-name:         Alice
-place:        [object Object]
-number:       23
-occupiedBy: [object Object]
+以前，所有字符串化的对象都没有缩进和额外的空格。如果我们想通过网络发送一个对象，那就没什么问题。space 参数专门用于调整出更美观的输出。
+
+这里的 space = 2 告诉 JavaScript 在多行中显示嵌套的对象，对象内部缩进 2 个空格：
 */
 
-/* 我们可以使用一个函数代替数组作为 replacer。
+/* 两个空格的缩进：
+{
+  "name": "John",
+  "age": 25,
+  "roles": {
+    "isAdmin": false,
+    "isEditor": true
+  }
+}
+*/
 
-该函数会为每个 (key,value) 对调用并返回“已替换”的值，该值将替换原有的值。如果值被跳过了，则为 undefined。
-
-在我们的例子中，我们可以为 occupiedBy 以外的所有内容按原样返回 value。对于 occupiedBy，下面的代码返回 undefined */
+/* 对于 JSON.stringify(user, null, 4) 的结果会有更多缩进：
+{
+    "name": "John",
+    "age": 25,
+    "roles": {
+        "isAdmin": false,
+        "isEditor": true
+    }
+}
+*/
