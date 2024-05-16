@@ -1,27 +1,20 @@
-function showName() {
-  alert(arguments.length);
-  alert(arguments[0]);
-  alert(arguments[1]);
+let arr1 = [1, -2, 3, 4];
+let arr2 = [8, 3, 4, -2];
 
-  // 它是可遍历的
-  // for(let arg of arguments) alert(arg);
-}
+let merged = [0, ...arr1, 1, ...arr2];
 
-// 依次显示：2，Julius，Caesar
-showName('Julius', 'Caesar');
+alert(Math.max(1, ...arr1, 2, ...arr2, 25));
 
-// 依次显示：1，Ilya，undefined（没有第二个参数）
-showName('Ilya');
+let str = 'Hello';
 
-/* 
-在过去，JavaScript 中不支持 rest 参数语法，而使用 arguments 是获取函数所有参数的唯一方法。现在它仍然有效，我们可以在一些老代码里找到它。
+alert([...str]);
 
-但缺点是，尽管 arguments 是一个类数组，也是可迭代对象，但它终究不是数组。它不支持数组方法，因此我们不能调用 arguments.map(...) 等方法。
+/* 不过 Array.from(obj) 和 [...obj] 存在一个细微的差别：
 
-此外，它始终包含所有参数，我们不能像使用 rest 参数那样只截取参数的一部分。
+Array.from 适用于类数组对象也适用于可迭代对象。
+Spread 语法只适用于可迭代对象。
+因此，对于将一些“东西”转换为数组的任务，Array.from 往往更通用。 */
 
-因此，当我们需要这些功能时，最好使用 rest 参数。
+/* Spread 语法内部使用了迭代器来收集元素，与 for..of 的方式相同。它看起来和 rest 参数很像，也使用 ...，但是二者的用途完全相反。
 
-
-箭头函数没有自身的 this。现在我们知道了它们也没有特殊的 arguments 对象
-*/
+当在函数调用中使用 ...arr 时，它会把可迭代对象 arr “展开”到参数列表中。 */
