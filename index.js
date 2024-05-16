@@ -1,13 +1,14 @@
-let sumAll = (...args) => {
-  let sum = 0;
-  for (let arg of args) sum += arg;
-  return sum;
+let showName = (firstName, lastName, ...titles) => {
+  alert(firstName + '' + lastName);
+
+  // 剩余的参数将被放入titles数组中
+  alert(titles[0]);
+  alert(titles[1]);
+  alert(titles.length);
 };
 
-alert(sumAll(1));
-alert(sumAll(1, 2));
-alert(sumAll(1, 2, 3));
+showName('Julius', 'Caesar', 'Consul', 'Imperator');
 
-/* 我们可以在函数定义中声明一个数组来收集参数。语法是这样的：...变量名，这将会声明一个数组并指定其名称，其中存有剩余的参数。这三个点的语义就是“收集剩余的参数并存进指定数组中”。
+/* 我们也可以选择将第一个参数获取为变量，并将剩余的参数收集起来。
 
-例如，我们需要把所有的参数都放到数组 args 中： */
+下面的例子把前两个参数获取为变量，并把剩余的参数收集到 titles 数组中： */
